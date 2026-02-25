@@ -7,11 +7,15 @@
 
 SynthAPT is a playbook-based adversary simulation framework for replicating complex attack paths. It is designed for validating advanced detections and AI-based investigation agents. The core idea is that malware behavior can be expressed in JSON and compiled into functional malware, enabling rapid development of realistic scenarios using LLMs.
 
+![](img/malware_replication.gif)
+
 The core implant is a shellcode payload driven by a playbook interpreter. A playbook predefines the full attack path and the implant follows it, moving throughout the environment via process injection, lateral movement, etc. Each implant spawns as an independent thread with its own instruction set, so multi-stage attacks (e.g. initial access → privesc → lateral movement → exfiltration) are expressed as a graph of cooperating implants, all defined upfront in the playbook. This has three major advantages:
 
 1. Payloads can mimic real malware without C2 infrastructure - the full attack path is embedded in the payload and C2 interactions can be mocked
 2. Payloads are repeatable - they execute the entire attack path identically every time, making them suitable for regression testing detections
 3. LLMs can translate threat intelligence reports and blogs directly into working payloads, without requiring offensive expertise or building malware from scratch
+
+![](img/playbook.png)
 
 
 ## Features
